@@ -1,0 +1,17 @@
+.header {
+  background-color: rgb(165, 230, 255);
+  display: "flex";
+  width: 100%;
+  padding: 12px 24px;
+  border-bottom: 1px solid rgb(202, 202, 202);
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  font-size: 28px;
+}
+
+.date {
+  font-size: 16px;
+}
