@@ -1,0 +1,28 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+  margin: 20px;
+}
+
+.arrow {
+  border: none;
+  background-color: rgb(155, 252, 255);
+  cursor: pointer;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn {
+  padding: 8px;
+  border: none;
+  background-color: rgb(155, 252, 255);
+  cursor: pointer;
+}
