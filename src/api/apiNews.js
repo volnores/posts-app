@@ -7,6 +7,7 @@ export const getPosts = async ({
   page_number = 1,
   page_size = 10,
   category,
+  keywords,
 }) => {
   try {
     const response = await axios.get(`${BASE_URL}search`, {
@@ -15,6 +16,7 @@ export const getPosts = async ({
         page_size,
         page_number,
         category,
+        keywords,
       },
     });
     return response.data;
