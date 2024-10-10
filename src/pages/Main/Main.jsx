@@ -6,6 +6,8 @@ import NewsList from "../../components/NewsList/NewsList";
 import Skeleton from "../../components/Skeleton/Skeleton";
 import Pagination from "../../components/Pagination/Pagination";
 import Categories from "../../components/Categories/Categories";
+import SearchByKeywords from "../../components/SearchByKeywords/SearchByKeywords";
+import { useDebounce } from "../../useDebounce/useDebounce";
 
 const Main = () => {
   const [posts, setPosts] = useState([]);
@@ -13,6 +15,7 @@ const Main = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [keyword, setKeyword] = useState("");
   const pageSize = 10;
   const totalPages = 10;
 
@@ -23,6 +26,7 @@ const Main = () => {
         page_number: currentPage,
         page_size: pageSize,
         category: selectedCategory === "All" ? null : selectedCategory,
+        keywords: keyword,
       });
       setPosts(response.news);
       setIsLoading(false);
@@ -58,6 +62,8 @@ const Main = () => {
     }
   };
 
+  const debouncedKeywords = useDebounce(keyword, 1000);
+
   const handleCurrentPage = (page) => {
     setCurrentPage(page);
   };
@@ -68,7 +74,7 @@ const Main = () => {
 
   useEffect(() => {
     fetchPosts(currentPage);
-  }, [currentPage, selectedCategory]);
+  }, [currentPage, selectedCategory, debouncedKeywords]);
   return (
     <main className={style.main}>
       <Categories
@@ -76,6 +82,7 @@ const Main = () => {
         setSelectedCategory={setSelectedCategory}
         selectedCategory={selectedCategory}
       />
+      <SearchByKeywords keywords={keyword} setKeywords={setKeyword} />
       {posts.length > 0 && !isLoading ? (
         <NewsPost posts={posts[0]} />
       ) : (
