@@ -8,6 +8,8 @@ import Pagination from "../../components/Pagination/Pagination";
 import Categories from "../../components/Categories/Categories";
 import SearchByKeywords from "../../components/SearchByKeywords/SearchByKeywords";
 import { useDebounce } from "../../useDebounce/useDebounce";
+import { PAGE_SIZE, TOTAL_PAGES } from "../../constants/constants";
+import Slider from "../../components/Slider/Slider";
 
 const Main = () => {
   const [posts, setPosts] = useState([]);
@@ -16,15 +18,13 @@ const Main = () => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [keyword, setKeyword] = useState("");
-  const pageSize = 10;
-  const totalPages = 10;
 
   const fetchPosts = async (currentPage) => {
     try {
       setIsLoading(true);
       const response = await getPosts({
         page_number: currentPage,
-        page_size: pageSize,
+        page_size: PAGE_SIZE,
         category: selectedCategory === "All" ? null : selectedCategory,
         keywords: keyword,
       });
@@ -52,7 +52,7 @@ const Main = () => {
 
   const handleNextPage = () => {
     {
-      currentPage < totalPages ? setCurrentPage(currentPage + 1) : currentPage;
+      currentPage < TOTAL_PAGES ? setCurrentPage(currentPage + 1) : currentPage;
     }
   };
 
@@ -77,12 +77,14 @@ const Main = () => {
   }, [currentPage, selectedCategory, debouncedKeywords]);
   return (
     <main className={style.main}>
-      <Categories
+      <Slider
         categories={categories}
         setSelectedCategory={setSelectedCategory}
         selectedCategory={selectedCategory}
       />
+
       <SearchByKeywords keywords={keyword} setKeywords={setKeyword} />
+
       {posts.length > 0 && !isLoading ? (
         <NewsPost posts={posts[0]} />
       ) : (
@@ -90,7 +92,7 @@ const Main = () => {
       )}
 
       <Pagination
-        totalPages={totalPages}
+        totalPages={TOTAL_PAGES}
         handleNextPage={handleNextPage}
         handlePrevPage={handlePrevPage}
         handleCurrentPage={handleCurrentPage}

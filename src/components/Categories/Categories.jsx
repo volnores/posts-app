@@ -1,9 +1,14 @@
 import React from "react";
 import style from "../Categories/style.module.css";
 
-const Categories = ({ categories, selectedCategory, setSelectedCategory }) => {
+const Categories = ({
+  categories,
+  selectedCategory,
+  setSelectedCategory,
+  sliderRef,
+}) => {
   return (
-    <div className={style.categories}>
+    <div className={style.categories} ref={sliderRef}>
       {categories.map((item) => (
         <button
           key={item}
