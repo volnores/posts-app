@@ -1,7 +1,7 @@
 import React from "react";
 
-const CurrentDate = (date) => {
-  const options = {
+const CurrentDate = (date: Date) => {
+  const options: Intl.DateTimeFormatOptions = {
     weekday: "long",
     year: "numeric",
     month: "long",

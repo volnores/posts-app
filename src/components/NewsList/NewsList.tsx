@@ -1,8 +1,13 @@
 import React from "react";
 import style from "../NewsList/style.module.css";
 import NewsItem from "../NewsItem/NewsItem";
+import { IPosts } from "../../interfaces";
 
-const NewsList = ({ posts }) => {
+interface Props {
+  posts?: IPosts[];
+}
+
+const NewsList = ({ posts }: Props) => {
   return (
     <ul className={style.list}>
       {posts?.map((item) => (

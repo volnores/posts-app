@@ -5,7 +5,6 @@ import { getCategories, getPosts } from "../../api/apiNews";
 import NewsList from "../../components/NewsList/NewsList";
 import Skeleton from "../../components/Skeleton/Skeleton";
 import Pagination from "../../components/Pagination/Pagination";
-import Categories from "../../components/Categories/Categories";
 import SearchByKeywords from "../../components/SearchByKeywords/SearchByKeywords";
 import { useDebounce } from "../../useDebounce/useDebounce";
 import { PAGE_SIZE, TOTAL_PAGES } from "../../constants/constants";
@@ -50,21 +49,21 @@ const Main = () => {
     }
   };
 
-  const handleNextPage = () => {
+  const handleNextPage = (): void => {
     {
       currentPage < TOTAL_PAGES ? setCurrentPage(currentPage + 1) : currentPage;
     }
   };
 
-  const handlePrevPage = () => {
+  const handlePrevPage = (): void => {
     {
       currentPage > 1 ? setCurrentPage(currentPage - 1) : currentPage;
     }
   };
 
-  const debouncedKeywords = useDebounce(keyword, 1000);
+  const debouncedKeywords = useDebounce(keyword as string, 1000);
 
-  const handleCurrentPage = (page) => {
+  const handleCurrentPage = (page: number): void => {
     setCurrentPage(page);
   };
 

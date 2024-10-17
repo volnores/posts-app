@@ -1,0 +1,19 @@
+.App.dark {
+  background-color: #23272f;
+}
+
+.App.light {
+  background-color: white;
+}
+
+.App.dark.p,
+.App.dark.h1,
+.App.dark.h3 {
+  color: #f6f7f9;
+}
+
+.App.light.p,
+.App.light.h1,
+.App.light.h3 {
+  color: black;
+}
