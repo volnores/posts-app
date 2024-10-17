@@ -1,7 +1,12 @@
 import React from "react";
 import style from "../SearchByKeywords/style.module.css";
 
-const SearchByKeywords = ({ keywords, setKeywords }) => {
+interface Props {
+  keywords: string;
+  setKeywords: (keywords: string) => void;
+}
+
+const SearchByKeywords = ({ keywords, setKeywords }: Props) => {
   return (
     <div className={style.search}>
       <form>

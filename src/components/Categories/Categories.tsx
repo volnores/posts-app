@@ -1,12 +1,13 @@
 import React from "react";
 import style from "../Categories/style.module.css";
+import { ICategories } from "../../interfaces";
 
 const Categories = ({
   categories,
   selectedCategory,
   setSelectedCategory,
   sliderRef,
-}) => {
+}: ICategories) => {
   return (
     <div className={style.categories} ref={sliderRef}>
       {categories.map((item) => (
