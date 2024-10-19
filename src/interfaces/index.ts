@@ -17,6 +17,13 @@ export interface ICategories {
   sliderRef: string;
 }
 
+export interface IParams {
+  page_number?: number;
+  page_size?: number;
+  category?: string | null;
+  keywords?: string;
+}
+
 export interface IPagination {
   totalPages: number;
   handleNextPage: () => void;
