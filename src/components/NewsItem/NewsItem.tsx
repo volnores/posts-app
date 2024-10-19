@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import TimeAgo from "../../TimeAgo/TimeAgo";
 import style from "../NewsItem/style.module.css";
 import { IPosts } from "../../interfaces";
+import { themeProvider } from "../../App";
 
 interface Props {
   posts?: IPosts;
 }
 
 const NewsItem = ({ posts }: Props) => {
+  const { theme } = useContext(themeProvider);
   return (
-    <li className={style.posts}>
+    <li className={`${style.posts} ${theme ? style.dark : style.light}`}>
       <div
         className={style.wrapper}
         style={{ backgroundImage: `url(${posts?.image})` }}
