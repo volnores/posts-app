@@ -28,3 +28,12 @@
   font-size: 14px;
   color: rgb(163, 183, 201);
 }
+
+.dark {
+  background-color: #23272f;
+  color: white;
+}
+
+.light {
+  background-color: white;
+}
